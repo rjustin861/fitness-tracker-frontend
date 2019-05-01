@@ -3,6 +3,7 @@ import '../css/Header.css';
 import logo from '../images/logo.png';
 
 class Header extends Component {
+
     render() {
         return (
                 <div className="header">
@@ -11,8 +12,12 @@ class Header extends Component {
                     </div>
                     <div className="menu">
                         <ul className="nav">
-                            <li><a href="#" onClick={() => this.props.show_modal('Register')}>Register</a></li>
-                            <li><a href="#" onClick={() => this.props.show_modal('Login')}>Login</a></li>
+                        {
+                            this.props.isLoggedIn === true ?
+                                <><li><a href="#" onClick={() => this.props.logout()}>Logout</a></li></> 
+                            : 
+                                <><li><a href="#" onClick={() => this.props.show_modal('Register')}>Register</a></li><li><a href="#" onClick={() => this.props.show_modal('Login')}>Login</a></li></>
+                        }
                         </ul>
                     </div>
                 </div>

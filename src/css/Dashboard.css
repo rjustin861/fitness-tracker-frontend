@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    height: 80vh;
+    align-items: center;
+}
+
+.container-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.caption {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.content{
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.icon {
+    padding: 5px;
+}
+
+.breadcrumb{
+    margin: 1rem 0rem;
+}
+
+.button{
+    color: white;
+    background-color: tomato;
+    font-weight: 600;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem;
+    width: 60%;
+}
+
+.button-nav {
+    color: white;
+    background-color: #333333;
+    font-weight: 600;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem;
+    width: 6rem;
+}
+
+input {
+    size: 2rem;
+    padding: 10px;
+    width: 80%;
+}
+
+input[name="exercise"] {
+    size: 2rem;
+    padding: 10px;
+    width: 100%;
+}
