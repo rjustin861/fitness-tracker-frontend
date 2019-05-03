@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import App from './App';
-import Dashboard from './Dashboard';
+import App from './component/App';
+import Dashboard from './component/Dashboard';
 
 class Routes extends Component {
     render() {

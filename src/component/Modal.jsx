@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import '../css/Modal.css';
 
 class Modal extends Component {
-
     state = {
         isLoggedIn: false
     }
 
     buildContent = (command) => {
-        if(command == 'Register')
+        if(command === 'Register')
             return (
                 <div>
                     <form>
@@ -33,23 +32,13 @@ class Modal extends Component {
 
     render() {
         return (
-            <div className={"modal "+ (this.props.hidden ? 'hidden' : '')}>
+            <div className={"modal "+ (this.props.hideModal ? 'hidden' : '')}>
                 <div className="modal-content">
-                    <label className="close" onClick={this.props.close_modal}>&#x2715;</label>
+                    <label className="close" onClick={this.props.closeModal}>&#x2715;</label>
                     <h2>{this.props.command}</h2><hr />
                      {this.buildContent(this.props.command)}
-                    {/*<label className="modal-content-btn" onClick={this.props.close_modal}>OK</label>*/}   
                 </div>          
             </div>
-            /*<div><div id="open-modal" className={'modal-window ' + (this.props.hidden ? 'hidden' : '')}>
-                <div>
-                    <a href="#" title="Close" className="modal-close">Close</a>
-                    <h1>Voilà!</h1>
-                    <div>A CSS-only modal based on the :target pseudo-class. Hope you find it helpful.</div>
-                    <div><small>Sponsor</small></div>
-                    <a href="https://aminoeditor.com" target="_blank">👉 Amino: Live CSS Editor for Chrome</a>
-                </div>
-        </div>*/
         );
   }
 }

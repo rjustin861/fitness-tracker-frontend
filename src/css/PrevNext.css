@@ -1,0 +1,19 @@
+.container-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button-nav {
+    color: white;
+    background-color: #333333;
+    font-weight: 600;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem;
+    width: 8rem;
+    margin: 0rem 1rem;
+}

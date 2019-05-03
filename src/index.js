@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import Routes from './Routes';
+import './index.css';
 import * as serviceWorker from './serviceWorker';
+require('dotenv').config();
 
 ReactDOM.render(<Routes />, document.getElementById('root'));
 
