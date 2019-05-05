@@ -59,16 +59,19 @@ class Step1 extends Component {
     render() {
         return (
             <div className='container'>
-                <div className='caption'>Step 1</div>
-                <div className='content'>When did you start your training?</div>
-                <div className='content'><input type="datetime-local"  value={this.state.startTime} onChange={(e) => this.updateStartTime(e)} /></div>
-                <div className='content'>When did you end your training?</div>
-                <div className='content'><input type="datetime-local"  value={this.state.endTime} onChange={(e) => this.updateEndTime(e)} /></div>
-                <div className='breadcrumb'>Step 1 of 3</div>
-
+                <div>
+                    <div className='caption'>Training Duration</div>
+                    <div className='breadcrumb'>Step 1 of 3</div>
+                </div>
+                <div className='container-step1'>
+                    <div className='content'>When did you start your training?</div>
+                    <div className='content'><input type="datetime-local"  value={this.state.startTime} onChange={(e) => this.updateStartTime(e)} /></div>
+                    <div className='content'>When did you end your training?</div>
+                    <div className='content'><input type="datetime-local"  value={this.state.endTime} onChange={(e) => this.updateEndTime(e)} /></div>
+                </div>
                 <div className='container-nav'>
-                    <div className='button-nav'><a onClick={() => this.props.prev(this.props.step, this.state.workout)}>{"<"} Prev</a></div>
-                    <div className='button-nav'><a onClick={() => this.props.next(this.props.step, this.state.workout)}>Next {">"}</a></div>
+                    <div className='button-nav secondary'><a onClick={() => this.props.prev(this.props.step, this.state.workout)}>{"<"} Prev</a></div>
+                    <div className='button-nav primary'><a onClick={() => this.props.next(this.props.step, this.state.workout)}>Next {">"}</a></div>
                 </div>
             </div>
         );

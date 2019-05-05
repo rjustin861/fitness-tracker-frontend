@@ -40,17 +40,28 @@ class Step2 extends Component {
 
     render() {
         return (
-            <div className='container'>
+            <div>
                 {this.state.workout[0].exercise_log && this.state.workout[0].exercise_log.length != 0 && <ExerciseSummary exerciselogs={this.state.workout[0].exercise_log} removeExercise={this.removeExercise} />}
-                <div className='caption'>Step 2</div>
-                <div className='content'>Let's find your exercise:</div>
-                <SearchBar selectExercise={this.selectExercise} />
-                {this.state.selectedExercise && <FillExerciseLog selectedExercise={this.state.selectedExercise} addExercise={this.addExercise} />}
-                <div className='breadcrumb'>Step 2 of 3</div>
+            
+                <div className='container'>
+                    <div>
+                        <div className='caption'>Add Exercises</div>
+                        <div className='breadcrumb'>Step 2 of 3</div>
+                    </div>
 
-                <div className='container-nav'>
-                    <div className='button-nav'><a onClick={() => this.props.prev(this.props.step, this.state.workout)}>{"<"} Prev</a></div>
-                    <div className={'button-nav ' + (this.state.workout[0].exercise_log.length === 0 ? 'disabled' : '')}><a onClick={() => this.props.next(this.props.step, this.state.workout)}>Review</a></div>
+                    <div>
+                        <div className='content'>Let's find your exercise:</div>
+                        <SearchBar selectExercise={this.selectExercise} />
+                    </div>
+
+                    <div>
+                        {this.state.selectedExercise && <FillExerciseLog selectedExercise={this.state.selectedExercise} addExercise={this.addExercise} />}
+                    </div>
+
+                    <div className='container-nav'>
+                        <div className='button-nav secondary'><a onClick={() => this.props.prev(this.props.step, this.state.workout)}>{"<"} Prev</a></div>
+                        <div className={'button-nav primary ' + (this.state.workout[0].exercise_log.length === 0 ? 'disabled' : '')}><a onClick={() => this.props.next(this.props.step, this.state.workout)}>Review</a></div>
+                    </div>
                 </div>
             </div>
         );

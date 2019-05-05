@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+import '../css/PrevNext.css';
+import '../css/FillExerciseLog.css';
+
 class FillExerciseLog extends Component {
     state = {
         set: '',
@@ -47,8 +50,8 @@ class FillExerciseLog extends Component {
     render() {
         return (
             <div>
-                <div className='caption'>{this.props.selectedExercise}</div>
-                <form onSubmit={(e) => this.handleFormSubmit(e)}>
+                <div className='exercise_name'>{this.props.selectedExercise}</div>
+                <form>
                     <div className="form-group">
                         <label htmlFor="id_sets" className="control-label col-md-3">
                             Number of sets:
@@ -68,7 +71,7 @@ class FillExerciseLog extends Component {
                         <input name="weight" id="id_weight" type="number" className="exerciseForm" value={this.state.weight} onChange={this.updateWeight}/>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Save" id="form-save" className="btn btn-default btn-block"/>
+                        <div className='button small primary'><a onClick={(e) => this.handleFormSubmit(e)}>Save</a></div>
                     </div>
                 </form>
             </div>

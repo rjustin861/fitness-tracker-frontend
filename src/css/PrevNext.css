@@ -6,16 +6,30 @@
 }
 
 .button-nav {
-    color: white;
-    background-color: #333333;
     font-weight: 600;
     border-radius: 5px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1rem;
-    width: 8rem;
-    margin: 0rem 1rem;
+    /* -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -ms-appearance: none;
+    -o-appearance: none;
+    -appearance: none;
+    outline: none; */
+}
+
+.primary {
+    color: white;
+    background-color: #A6032F;
+}
+
+.secondary {
+    color: #A6032F;
+    background-color: white;
+    border: 2px solid #A6032F;
 }
 
 .disabled { 
