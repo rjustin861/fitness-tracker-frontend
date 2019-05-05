@@ -9,46 +9,37 @@ import ViewWorkout from './ViewWorkout';
 class DashboardBody extends Component {
     state = {
         step: 0,
-        exerciselogs: [],
-        startTime: '',
-        endTime: '',
-        isSubmitted: false
+        workout: []
     }
 
-    prev = (currentStep, exerciselogs) => {
-        let step = currentStep - 1;
+    prev = (currentStep, workout) => {
+        const step = currentStep - 1;
         this.setState({step});
-
-        if(exerciselogs)
-            this.setState({exerciselogs});
-    }
-
-    next = (currentStep, exerciselogs, startTime, endTime) => {
-        let step = currentStep + 1;
-        this.setState({step});
-
-        if(exerciselogs)
-            this.setState({exerciselogs});
         
-        if(startTime)
-            this.setState({startTime});
-        
-        if(endTime)
-            this.setState({endTime});
-    }
-
-    save = (exerciselogs) => {
-        const data = {
-            workout: [{
-                start_date: this.state.startTime,
-                end_date: this.state.endTime,
-                exercise_log: exerciselogs
-            }]
+        if(workout && workout.length !== 0) {
+            console.log('workout in prev', workout);
+            this.setState({workout});
+        } else {
+            this.setState({workout: []});
         }
+    }
 
-        console.log(data);
+    next = (currentStep, workout) => {
+        const step = currentStep + 1;
+        this.setState({step});
 
-        axios.post(process.env.REACT_APP_POST_WORKOUT_URL + '?user_id=5cc94f1112c41412abe3a553', data)
+        if(workout && workout.length !== 0) {
+            console.log('workout in next', workout);
+            this.setState({workout});
+        } else {
+            this.setState({workout: []});
+        }
+    }
+
+    save = (workout) => {
+        console.log({workout});
+
+        axios.post(process.env.REACT_APP_POST_WORKOUT_URL + '?user_id=5cc94f1112c41412abe3a553', {workout})
             .then(response => {
                 console.log('response', response.data);
                 alert('Record created');
@@ -63,9 +54,9 @@ class DashboardBody extends Component {
         return (
             <div>
                 {this.state.step === 0 && <Step0 step={0} next={this.next} />}
-                {this.state.step === 1 && <Step1 step={1} prev={this.prev} next={this.next} />}
-                {this.state.step === 2 && <Step2 step={2} prev={this.prev} next={this.next} exerciselogs={this.state.exerciselogs} />}
-                {this.state.step === 3 && <Step3 step={3} prev={this.prev} save={this.save} exerciselogs={this.state.exerciselogs} />}
+                {this.state.step === 1 && <Step1 step={1} prev={this.prev} next={this.next} workout={this.state.workout} />}
+                {this.state.step === 2 && <Step2 step={2} prev={this.prev} next={this.next} workout={this.state.workout} />}
+                {this.state.step === 3 && <Step3 step={3} prev={this.prev} save={this.save} workout={this.state.workout} />}
                 {this.state.step === 4 && <ViewWorkout />}
             </div>
         );

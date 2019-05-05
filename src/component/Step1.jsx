@@ -1,23 +1,58 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 
-import PrevNext from './PrevNext';
+import '../css/PrevNext.css';
 
 class Step1 extends Component {
     state = {
         startTime: moment().format('YYYY-MM-DDTHH:mm'),
-        endTime: moment().format('YYYY-MM-DDTHH:mm')
+        endTime: moment().format('YYYY-MM-DDTHH:mm'),
+        workout: []
+    }
+
+    componentWillMount() {
+        console.log('component will mount step 1', this.props.workout);
+        
+        if(this.props.workout && this.props.workout.length !== 0) {
+            this.setState(
+                {
+                    workout: this.props.workout,
+                    startTime: this.props.workout[0].start_date,
+                    endTime: this.props.workout[0].end_date
+                }
+            );
+        }
+        else {
+            let workout = this.state.workout;
+            workout.push(
+                {
+                    start_date: this.state.startTime,
+                    end_date: this.state.endTime,
+                    exercise_log: []
+                });
+
+            this.setState({workout});
+        }
     }
 
     updateStartTime= (e) => {
-        this.setState({
-            startTime: e.target.value
+        let startTime = e.target.value;
+        
+        this.setState({startTime}, () => {
+            let workout = this.state.workout;
+            workout[0].start_date = this.state.startTime;
+            this.setState({workout});
         });
+        
     }
 
     updateEndTime= (e) => {
-        this.setState({
-            endTime: e.target.value
+        let endTime = e.target.value;
+
+        this.setState({endTime}, () => {
+            let workout = this.state.workout;
+            workout[0].end_date = this.state.endTime;
+            this.setState({workout});
         });
     }
 
@@ -26,11 +61,15 @@ class Step1 extends Component {
             <div className='container'>
                 <div className='caption'>Step 1</div>
                 <div className='content'>When did you start your training?</div>
-                <div className='content'><input type="datetime-local"  value={this.state.startTime} onChange={this.updateStartTime} /></div>
+                <div className='content'><input type="datetime-local"  value={this.state.startTime} onChange={(e) => this.updateStartTime(e)} /></div>
                 <div className='content'>When did you end your training?</div>
-                <div className='content'><input type="datetime-local"  value={this.state.endTime} onChange={this.updateEndTime} /></div>
+                <div className='content'><input type="datetime-local"  value={this.state.endTime} onChange={(e) => this.updateEndTime(e)} /></div>
                 <div className='breadcrumb'>Step 1 of 3</div>
-                <PrevNext step={this.props.step} prev={this.props.prev} next={this.props.next} startTime={this.state.startTime} endTime={this.state.endTime} />
+
+                <div className='container-nav'>
+                    <div className='button-nav'><a onClick={() => this.props.prev(this.props.step, this.state.workout)}>{"<"} Prev</a></div>
+                    <div className='button-nav'><a onClick={() => this.props.next(this.props.step, this.state.workout)}>Next {">"}</a></div>
+                </div>
             </div>
         );
     }

@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
-import PrevNext from './PrevNext';
 import ExerciseSummary from './ExerciseSummary';
 import SearchBar from './SearchBar';
 import FillExerciseLog from './FillExerciseLog';
 
+import '../css/PrevNext.css';
+
 class Step2 extends Component {
     state = {
         selectedExercise: '',
-        exerciselogs: []
+        workout: []
     }
 
-    componentDidMount() {
-        if(this.props.exerciselogs)
-            this.setState({exerciselogs: this.props.exerciselogs});
+    componentWillMount() {
+        console.log('component will mount step 2', this.props.workout);
+        
+        if(this.props.workout && this.props.workout.length !== 0)
+            this.setState({workout: this.props.workout});
     }
 
     selectExercise = (selectedExercise) => {
@@ -20,28 +23,35 @@ class Step2 extends Component {
     }
 
     addExercise = (exerciselog) => {
-        let exerciselogs = this.state.exerciselogs;
-        exerciselogs.push(exerciselog);
-        this.setState({exerciselogs, selectedExercise: ''});
+        let workout = this.state.workout;
+        workout[0].exercise_log.push(exerciselog);
+        this.setState({workout, selectedExercise: ''});
     }
 
     removeExercise = (exerciseToBeRemoved) => {
-        let exerciselogs = this.state.exerciselogs.filter((exercise) => {
-            return exercise.exercise != exerciseToBeRemoved.exercise;
+        let exerciselogs = this.state.workout[0].exercise_log.filter((exercise) => {
+            return exercise.exercise !== exerciseToBeRemoved.exercise;
         });
-        this.setState({exerciselogs});
+        
+        let workout = this.state.workout;
+        workout[0].exercise_log = exerciselogs;
+        this.setState({workout});
     }
 
     render() {
         return (
             <div className='container'>
-                {this.state.exerciselogs.length != 0 && <ExerciseSummary exerciselogs={this.state.exerciselogs} removeExercise={this.removeExercise} />}
+                {this.state.workout[0].exercise_log && this.state.workout[0].exercise_log.length != 0 && <ExerciseSummary exerciselogs={this.state.workout[0].exercise_log} removeExercise={this.removeExercise} />}
                 <div className='caption'>Step 2</div>
                 <div className='content'>Let's find your exercise:</div>
                 <SearchBar selectExercise={this.selectExercise} />
                 {this.state.selectedExercise && <FillExerciseLog selectedExercise={this.state.selectedExercise} addExercise={this.addExercise} />}
                 <div className='breadcrumb'>Step 2 of 3</div>
-                <PrevNext step={this.props.step} prev={this.props.prev} next={this.props.next} exerciselogs={this.state.exerciselogs} />
+
+                <div className='container-nav'>
+                    <div className='button-nav'><a onClick={() => this.props.prev(this.props.step, this.state.workout)}>{"<"} Prev</a></div>
+                    <div className={'button-nav ' + (this.state.workout[0].exercise_log.length === 0 ? 'disabled' : '')}><a onClick={() => this.props.next(this.props.step, this.state.workout)}>Review</a></div>
+                </div>
             </div>
         );
     }

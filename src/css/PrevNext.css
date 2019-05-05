@@ -17,3 +17,7 @@
     width: 8rem;
     margin: 0rem 1rem;
 }
+
+.disabled { 
+    display: none;
+}
