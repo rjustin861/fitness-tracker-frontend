@@ -7,7 +7,7 @@ class Step0 extends Component {
                 <div className='container-step0'>
                     <div className='caption'>Welcome on Board!</div>
                     <div className='heading'>Start and fill out <br/>your first workout</div>
-                    <div className='button'><a onClick={() => this.props.next(this.props.step)}>Fill Workout</a></div>
+                    <a onClick={() => this.props.next(this.props.step)}><div className='button'>Fill Workout</div></a>
                 </div>
             </div>
         );

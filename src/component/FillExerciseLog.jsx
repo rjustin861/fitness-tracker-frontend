@@ -10,6 +10,10 @@ class FillExerciseLog extends Component {
         weight: ''
     }
 
+    componentDidMount() {
+        this.setInput.focus();
+    }
+
     updateSets = (e) => {
         this.setState({
             set: e.target.value
@@ -56,7 +60,7 @@ class FillExerciseLog extends Component {
                         <label htmlFor="id_sets" className="control-label col-md-3">
                             Number of sets:
                         </label>
-                        <input name="sets" id="id_sets" type="number" className="exerciseForm" value={this.state.set} onChange={this.updateSets}/>
+                        <input name="sets" id="id_sets" type="number" className="exerciseForm" ref={(input) => this.setInput = input} value={this.state.set} onChange={this.updateSets}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="id_reps" className="col-md-3 control-label">
@@ -71,7 +75,7 @@ class FillExerciseLog extends Component {
                         <input name="weight" id="id_weight" type="number" className="exerciseForm" value={this.state.weight} onChange={this.updateWeight}/>
                     </div>
                     <div className="form-group">
-                        <div className='button small primary'><a onClick={(e) => this.handleFormSubmit(e)}>Save</a></div>
+                        <a className={"saveButton " + (this.state.set && this.state.repetitions && this.state.weight ? '' : 'disabled')} onClick={(e) => this.handleFormSubmit(e)}><div className='button small primary'>Save</div></a>
                     </div>
                 </form>
             </div>

@@ -70,8 +70,8 @@ class Step1 extends Component {
                     <div className='content'><input type="datetime-local"  value={this.state.endTime} onChange={(e) => this.updateEndTime(e)} /></div>
                 </div>
                 <div className='container-nav'>
-                    <div className='button-nav secondary'><a onClick={() => this.props.prev(this.props.step, this.state.workout)}>{"<"} Prev</a></div>
-                    <div className='button-nav primary'><a onClick={() => this.props.next(this.props.step, this.state.workout)}>Next {">"}</a></div>
+                    <a onClick={() => this.props.prev(this.props.step, this.state.workout)}><div className='button-nav secondary'>{"<"} Prev</div></a>
+                    <a onClick={() => this.props.next(this.props.step, this.state.workout)}><div className='button-nav primary'>Next {">"}</div></a>
                 </div>
             </div>
         );

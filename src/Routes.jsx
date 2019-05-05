@@ -6,7 +6,7 @@ import Dashboard from './component/Dashboard';
 class Routes extends Component {
     render() {
         return (
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <Switch>
                     <Route path="/" component={App} exact />
                     <Route path="/dashboard" component={Dashboard} />

@@ -59,8 +59,8 @@ class Step2 extends Component {
                     </div>
 
                     <div className='container-nav'>
-                        <div className='button-nav secondary'><a onClick={() => this.props.prev(this.props.step, this.state.workout)}>{"<"} Prev</a></div>
-                        <div className={'button-nav primary ' + (this.state.workout[0].exercise_log.length === 0 ? 'disabled' : '')}><a onClick={() => this.props.next(this.props.step, this.state.workout)}>Review</a></div>
+                        <a onClick={() => this.props.prev(this.props.step, this.state.workout)}><div className='button-nav secondary'>{"<"} Prev</div></a>
+                        <a onClick={() => this.props.next(this.props.step, this.state.workout)}><div className={'button-nav primary ' + (this.state.workout[0].exercise_log.length === 0 ? 'disabled' : '')}>Review</div></a>
                     </div>
                 </div>
             </div>
