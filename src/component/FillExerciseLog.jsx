@@ -38,7 +38,8 @@ class FillExerciseLog extends Component {
             exercise: this.props.selectedExercise,
             set: this.state.set,
             repetitions: this.state.repetitions,
-            weight: this.state.weight
+            weight: this.state.weight,
+            muscle_group: this.props.muscle_group
         }
         
         console.log('formData', data);

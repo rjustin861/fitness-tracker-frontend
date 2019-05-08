@@ -8,6 +8,7 @@ import '../css/PrevNext.css';
 class Step2 extends Component {
     state = {
         selectedExercise: '',
+        muscle_group: [],
         workout: []
     }
 
@@ -19,7 +20,7 @@ class Step2 extends Component {
     }
 
     selectExercise = (selectedExercise) => {
-        this.setState({selectedExercise});
+        this.setState({selectedExercise: selectedExercise.name, muscle_group: selectedExercise.muscle_group});
     }
 
     addExercise = (exerciselog) => {
@@ -55,7 +56,7 @@ class Step2 extends Component {
                     </div>
 
                     <div>
-                        {this.state.selectedExercise && <FillExerciseLog selectedExercise={this.state.selectedExercise} addExercise={this.addExercise} />}
+                        {this.state.selectedExercise && <FillExerciseLog selectedExercise={this.state.selectedExercise} muscle_group={this.state.muscle_group} addExercise={this.addExercise} />}
                     </div>
 
                     <div className='container-nav'>

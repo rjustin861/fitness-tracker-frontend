@@ -149,7 +149,8 @@ class SearchBar extends Component {
     };
 
     onSuggestionSelected = (event,  { suggestion, suggestionValue}) => {
-        this.props.selectExercise(suggestionValue);
+        console.log('onSuggestionSelected', suggestion);
+        this.props.selectExercise(suggestion);
         this.setState({value: ''});
     };
 

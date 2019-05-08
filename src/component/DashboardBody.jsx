@@ -43,7 +43,7 @@ class DashboardBody extends Component {
             .then(response => {
                 console.log('response', response.data);
                 alert('Record created');
-                this.setState({step: 4});
+                this.setState({step: 0});
             })
             .catch(error => {
                 console.log('error', error);
