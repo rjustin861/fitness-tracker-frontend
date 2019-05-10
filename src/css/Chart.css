@@ -1,0 +1,9 @@
+.chart-container {
+    margin: 2rem 0;
+    height: auto;
+    overflow: auto;
+}
+
+.chart {
+    width: 280px;
+}

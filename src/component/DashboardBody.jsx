@@ -50,10 +50,15 @@ class DashboardBody extends Component {
             });
     }
 
+    view = () => {
+        const step = 4;
+        this.setState({step})
+    }
+
     render() {
         return (
             <div>
-                {this.state.step === 0 && <Step0 step={0} next={this.next} />}
+                {this.state.step === 0 && <Step0 step={0} next={this.next} view={this.view}/>}
                 {this.state.step === 1 && <Step1 step={1} prev={this.prev} next={this.next} workout={this.state.workout} />}
                 {this.state.step === 2 && <Step2 step={2} prev={this.prev} next={this.next} workout={this.state.workout} />}
                 {this.state.step === 3 && <Step3 step={3} prev={this.prev} save={this.save} workout={this.state.workout} />}
