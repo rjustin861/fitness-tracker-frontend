@@ -1,29 +1,29 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
+import AuthHelperService from '../service/AuthHelperService';
 import '../css/Dashboard.css';
+
+//Our higher order component
+import WithAuth from '../service/WithAuth';
 
 import Header from './Header';
 import DashboardBody from './DashboardBody';
 
 class Dashboard extends Component {
-  state = {
-    isLoggedIn: true
-  }
+  Auth = new AuthHelperService();
 
   performLogout = () => {
-    //call API to logout, if logout successful, then set isLoggedIn to false
-    this.setState({isLoggedIn: false});
+    this.Auth.logout();
+    this.props.history.replace('/');
   }
 
   render() {
     return (
       <div>
-        {this.state.isLoggedIn || <Redirect to='/' />}
-        <Header isLoggedIn={this.state.isLoggedIn} performLogout={this.performLogout} />
-        <DashboardBody />
+        <Header isLoggedIn={true} performLogout={this.performLogout} />
+        <DashboardBody name={this.props.confirm.name} />
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default WithAuth(Dashboard);
