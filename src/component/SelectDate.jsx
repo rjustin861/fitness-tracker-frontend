@@ -5,18 +5,9 @@ import '../css/SelectDate.css';
 
 class SelectDate extends Component {
     state = {
-        data: []
+        
     }
 
-    // componentWillReceiveProps(props) {
-	// 	console.log('exercise', props.data);
-	// 	// this.setState({data})
-	// }
-
-    // componentWillMount() {
-    //     console.log('component will mount date and exercise', this.props.data);
-    //     this.setState({data:this.props.data})
-    // }
     render() {
         return (
             <div>

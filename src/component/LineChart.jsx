@@ -34,7 +34,6 @@ class LineChart extends Component {
                     <div className="chart">
                         <canvas ref={this.chartRef}>
                         </canvas>
-                        <p>display data here</p>
                     </div>
                 </div>
             </div>
