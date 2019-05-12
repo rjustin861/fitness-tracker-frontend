@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import SelectDate from './SelectDate';
-import LineChart from './LineChart';
+import SelectChart from './SelectChart';
 import DailyWorkout from './DailyWorkout';
 import moment from 'moment';
 
@@ -12,7 +11,8 @@ class ViewWorkout extends Component {
         workouts: [],
         date: moment().format('YYYY-MM-DD'),
         filterWorkout: [],
-        chartExercise: []
+        chartExercise: [],
+        exerciseList: []
     }
 
     
@@ -25,16 +25,34 @@ class ViewWorkout extends Component {
         let workoutDate = response.data.start
         console.log('response.data', workouts)
         console.log('property', moment(workoutDate).format('YYYY-MM-DD'))
+        this.setState({workouts})
+        console.log('workouts', this.state.workouts)
+
         this.setState({workouts}, function(){
-            const now = moment().format('YYYY-MM-DD')
-            const filterWorkout = this.filterByDate(now)
-            console.log('filterWorkout', filterWorkout)
+        //    const exerciseList = this.exerciseIndex()
+        //    console.log('exerciselIst', this.state.exerciseList)
+
+           const now = moment().format('YYYY-MM-DD')
+           const filterWorkout = this.filterByDate(now)
+           console.log('filterWorkout', filterWorkout)
+
+           const exercises = this.state.workouts.map((workout) => {
+                return workout.name
+           })
+
+           const exercisesSet = [...new Set(exercises)]
+           console.log({exercises})
+           console.log({exercisesSet})
+          this.setState({exerciseList:exercisesSet})
+
+
+           const exercise = 'Bench Press'
+           const chartExercise = this.filterByExercise(exercise)
+           console.log('filterex', chartExercise)
         })
-        this.setState({workouts}, function(){
-            const exercise = 'row'
-            const chartExercise = this.filterByExercise(exercise)
-            console.log('filterex', chartExercise)
-        })
+
+
+
 
         
         })
@@ -60,7 +78,6 @@ class ViewWorkout extends Component {
     filterByExercise = (exercise) =>
     {
         const chartExercise = this.state.workouts.filter((workout) =>{
-        let exercise = 'row'
         console.log('exercise', exercise)
         let workoutExercise = workout.name
 
@@ -78,8 +95,7 @@ class ViewWorkout extends Component {
                 <h1>Workout Log</h1>
                 <DailyWorkout filterWorkout={this.state.filterWorkout} filterByDate={this.filterByDate}></DailyWorkout>
                 <h4>Check your exercise progress</h4>
-                <SelectDate workouts={this.state.workouts}></SelectDate>
-                <LineChart></LineChart>
+                <SelectChart exerciseList={this.state.exerciseList} chartExercise={this.state.chartExercise} filterByExercise={this.filterByExercise}> </SelectChart>
             </div>
         );
     }
