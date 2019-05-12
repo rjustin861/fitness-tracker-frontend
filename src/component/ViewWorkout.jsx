@@ -11,7 +11,8 @@ class ViewWorkout extends Component {
     state = {
         workouts: [],
         date: moment().format('YYYY-MM-DD'),
-        filterWorkout: []
+        filterWorkout: [],
+        chartExercise: []
     }
 
     
@@ -27,16 +28,14 @@ class ViewWorkout extends Component {
         this.setState({workouts}, function(){
             const now = moment().format('YYYY-MM-DD')
             const filterWorkout = this.filterByDate(now)
-            this.setState({filterWorkout})
-        });
-        
-        
-        // let workouts = this.props.workouts;
-        // let today = this.state.date;
-        // let day = moment(workouts.start).format('YYYY-MM-DD')
-        // let todayWorkouts = workouts.filter( (workout) => day === today)
-        // this.setState({workouts:todayWorkouts})
-        // console.log('data', this.state.workouts)
+            console.log('filterWorkout', filterWorkout)
+        })
+        this.setState({workouts}, function(){
+            const exercise = 'row'
+            const chartExercise = this.filterByExercise(exercise)
+            console.log('filterex', chartExercise)
+        })
+
         
         })
         .catch(error => {
@@ -47,13 +46,30 @@ class ViewWorkout extends Component {
 
     filterByDate = (start) =>
     {
-    return this.state.workouts.filter((workout) =>{
+        console.log(start)
+        const filterWorkout = this.state.workouts.filter((workout) =>{
         let date = moment(start).format('YYYY-MM-DD')
         let today = moment(workout.end).local().format('YYYY-MM-DD')
 
         return date === today
-
+    
     })
+    this.setState({filterWorkout})
+    }
+
+    filterByExercise = (exercise) =>
+    {
+        const chartExercise = this.state.workouts.filter((workout) =>{
+        let exercise = 'row'
+        console.log('exercise', exercise)
+        let workoutExercise = workout.name
+
+        return exercise === workoutExercise
+    
+    })
+    this.setState({chartExercise})
+    console.log('filterex', chartExercise)
+
     }
 
     render() {
