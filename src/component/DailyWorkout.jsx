@@ -23,7 +23,7 @@ class DailyWorkout extends Component {
             <div>
             <i class="far fa-calendar-alt"></i>
             <p className="title">Check your workouts:</p>
-                <input className="date" type="date" onChange={(e) => this.updateDate(e)}/>
+                <input className="date" defaultValue={this.state.date} type="date" onChange={(e) => this.updateDate(e)}/>
             <div>
                 <div className="workout">
                 <p className="workout_title">Daily log</p>
