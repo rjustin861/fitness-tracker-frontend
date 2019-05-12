@@ -10,29 +10,52 @@ import '../css/Chart.css';
 class Select extends Component {
     state = {
         dates: [],
-        weight: []
+        intensity: []
+    }
+
+    chartRef = React.createRef();
+
+    componentDidMount() {
+        this.buildChart()
+    }
+
+    componentDidUpdate() {
+        this.buildChart()
     }
 
 
-    chartRef = React.createRef();
-    
-    componentDidMount() {
+    buildChart = () => {
         const myChartRef = this.chartRef.current.getContext("2d");
-        
-        new Chart(myChartRef, {
-            type: 'line',
+        const labels = this.props.dates
+        const intensity = this.props.intensity
+
+        // if (typeof Chart !== "undefined") Chart.destroy();
+
+        Chart = new Chart(myChartRef, {
+            type: "line",
             data: {
                 //Bring in data
-                labels: [this.state.dates],
+                labels: labels,
                 datasets: [
                     {
-                        label: 'Push ups Intensity',
-                        data: [this.state.weight],
+                        label: "Intensity of workout",
+                        data: intensity,
+                        fill: true,
+                        borderColor: "#6610f2",
                     }
                 ]
             },
             options: {
-                //Customize chart options
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        top: 5,
+                        left: 15,
+                        right: 15,
+                        bottom: 15
+                    } 
+                }               
             }
         });
     }
@@ -47,14 +70,19 @@ class Select extends Component {
         this.props.chartExercise.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0));
         console.log('sorted', this.props.chartExercise)
 
+        //add Intensity
+
+        this.props.chartExercise.map(chart => chart.intensity = (chart.set * chart.reps *chart.weight))
+        console.log('intensity', this.props.chartExercise)
+
         // map
         var dates = this.props.chartExercise.map(chart => (moment(chart.start).format('YYYY-MM-DD')))
-        var weight = this.props.chartExercise.map(chart => (chart.weight))
+        var intensity = this.props.chartExercise.map(chart => (chart.intensity))
         console.log({dates})
-        console.log({weight})
+        console.log({intensity})
 
         this.setState({dates:dates})
-        this.setState({weight:weight})
+        this.setState({intensity:intensity})
     
         console.log('working?', this.state)
     }
