@@ -1,4 +1,86 @@
-.month {
+::-webkit-datetime-edit { padding: 0.25rem; }
+::-webkit-datetime-edit-fields-wrapper { background:#fff }
+::-webkit-datetime-edit-text { color:#A6032F; }
+::-webkit-datetime-edit-month-field { color:#A6032F; }
+::-webkit-datetime-edit-day-field { color:#A6032F; }
+::-webkit-datetime-edit-year-field { color:#A6032F; }
+::-webkit-inner-spin-button { display: none; }
+::-webkit-clear-button { display:none;}
+::-webkit-calendar-picker-indicator { color:#A6032F; }
+
+
+.title {
+    text-transform: uppercase;  
+    color: #590219;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin: 1rem 0;
+    line-height: 1.5rem;
+    font-size: 1rem;
+}
+
+.workout {
+    width: 100%;
+    padding: 0.5rem 1rem 1rem 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 4rem;
+}
+.workout_title {
+    text-transform: uppercase;  
+    color: #590219;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 1rem 0;
+    line-height: 0.75rem;
+}
+
+.fa-calendar-alt {
+    color: #590219;
+    font-size: 1.5rem;
+}
+input[type=date] {
+    border: 2px solid#590219;
+    border-radius: 3px;
+    background-color: #fff;
+    text-transform: uppercase;  
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.nodata {
+    width: 100%;
+    font-weight: 100;
+    color: darkgrey;
+}
+
+
+.svg {
+   background-color: #590219;
+   width: 20%;
+   height: 2px;
+   border-radius: 1px;
+}
+
+.key {
+    color: rgb(39, 39, 39);
+    font-weight: 300;
+    font-size: 1rem;   
+}
+
+.value {
+    font-family: 'poppins', 'sans-serif';
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #590219;
+    font-size: 1rem;
+}
+
+
+
+/* .month {
     text-align: center;
     width: 100%;
     background-color: lightgray;
@@ -23,11 +105,11 @@
 }
 
 .active {
-    background-color: #A6032F;
+    background-color: #590219;
     border-radius: 50%;
     height: 1.5rem;
     width: 1.5rem;
     color: white;
     padding: 0.2rem;
     text-align: center;
-}
+} */

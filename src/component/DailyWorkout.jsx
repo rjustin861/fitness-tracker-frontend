@@ -21,20 +21,26 @@ class DailyWorkout extends Component {
     render() {
         return (
             <div>
-            <h4>Check your workouts</h4>
-                <input type="date" onChange={(e) => this.updateDate(e)}/>
+            <i class="far fa-calendar-alt"></i>
+            <p className="title">Check your workouts:</p>
+                <input className="date" type="date" onChange={(e) => this.updateDate(e)}/>
             <div>
-                {this.props.filterWorkout.length == 0 && <div> No data</div>}
-                {this.props.filterWorkout.map((workout) => {
-                    return (
-                        <div key={workout._id}>
-                            <p>{workout.name}</p>
-                            <p>{workout.set}</p>
-                            <p>{workout.reps}</p>
-                            <p>{workout.weight}</p>
-                        </div>
-                    )
-                })}
+                <div className="workout">
+                <p className="workout_title">Daily log</p>
+                    <div className="svg"></div>
+                    {this.props.filterWorkout.length == 0 && <div class="nodata"> <p>Sorry, there are no workouts in the selected date.</p></div>}
+                    {this.props.filterWorkout.map((workout) => {
+                        return (
+                            <div key={workout._id}>
+                                <p className="key">Exercise: <span className="value"> {workout.name}</span></p>
+                                <p className="key">Sets: <span className="value"> {workout.set}</span></p>
+                                <p className="key">Repetitions: <span className="value"> {workout.reps}</span></p>
+                                <p className="key">Weight: <span className="value"> {workout.weight} KG</span></p>
+                                <div className="svg"></div>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
             </div>
         );

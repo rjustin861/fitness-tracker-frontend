@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../css/FillExerciseLog.css';
 import Chart from 'chart.js';
 import moment from 'moment';
-import '../css/Select.css';
+import '../css/SelectChart.css';
 import '../css/Chart.css';
 
 
@@ -91,11 +91,13 @@ class Select extends Component {
     render() {
         return (
             <div>
+                <i class="fas fa-chart-line"></i>
+                <p className="title">Check your exercise progress:</p>
+
                 <div className="range">
                   
-                    <label htmlFor="exercise">Choose Exercise</label>
                     <div>
-                        <select name="exercise" size="3" onChange={(e) => this.updateExercise(e)}>
+                        <select name="exercise" size="5" onChange={(e) => this.updateExercise(e)}>
                     {this.props.exerciseList.map((workout) => {
                     return (
                         <option value={workout}>{workout}</option>

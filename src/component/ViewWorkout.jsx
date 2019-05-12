@@ -91,9 +91,8 @@ class ViewWorkout extends Component {
     render() {
         return (
             <div className="container-view">
-                <h1>Workout Log</h1>
                 <DailyWorkout filterWorkout={this.state.filterWorkout} filterByDate={this.filterByDate}></DailyWorkout>
-                <h4>Check your exercise progress</h4>
+                <div className="svg"></div>
                 <SelectChart exerciseList={this.state.exerciseList} chartExercise={this.state.chartExercise} filterByExercise={this.filterByExercise}> </SelectChart>
             </div>
         );
