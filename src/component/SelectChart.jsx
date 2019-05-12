@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../css/FillExerciseLog.css';
 import Chart from 'chart.js';
+import moment from 'moment';
 import '../css/Select.css';
 import '../css/Chart.css';
 
@@ -8,7 +9,8 @@ import '../css/Chart.css';
 
 class Select extends Component {
     state = {
-        
+        dates: [],
+        weight: []
     }
 
 
@@ -21,11 +23,11 @@ class Select extends Component {
             type: 'line',
             data: {
                 //Bring in data
-                labels: ['01 May 2019','02 May 2019','03 May 2019','04 May 2019','05 May 2019','06 May 2019','07 May 2019','08 May 2019','09 May 2019','10 May 2019'],
+                labels: [this.state.dates],
                 datasets: [
                     {
                         label: 'Push ups Intensity',
-                        data: [1, 3, 5,7,9,5, 8, 12,9,10],
+                        data: [this.state.weight],
                     }
                 ]
             },
@@ -39,6 +41,22 @@ class Select extends Component {
         let exercise = e.target.value;
         console.log('target.value', e.target.value)
         this.props.filterByExercise(exercise)
+        console.log('chartex', this.props.chartExercise)
+
+        // Sort By Date
+        this.props.chartExercise.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0));
+        console.log('sorted', this.props.chartExercise)
+
+        // map
+        var dates = this.props.chartExercise.map(chart => (moment(chart.start).format('YYYY-MM-DD')))
+        var weight = this.props.chartExercise.map(chart => (chart.weight))
+        console.log({dates})
+        console.log({weight})
+
+        this.setState({dates:dates})
+        this.setState({weight:weight})
+    
+        console.log('working?', this.state)
     }
     
 

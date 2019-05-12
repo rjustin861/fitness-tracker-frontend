@@ -48,7 +48,6 @@ class ViewWorkout extends Component {
 
            const exercise = 'Bench Press'
            const chartExercise = this.filterByExercise(exercise)
-           console.log('filterex', chartExercise)
         })
 
 
@@ -85,7 +84,7 @@ class ViewWorkout extends Component {
     
     })
     this.setState({chartExercise})
-    console.log('filterex', chartExercise)
+
 
     }
 
