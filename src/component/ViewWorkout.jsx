@@ -12,13 +12,14 @@ class ViewWorkout extends Component {
         date: moment().format('YYYY-MM-DD'),
         filterWorkout: [],
         chartExercise: [],
-        exerciseList: []
+        exerciseList: [],
+        data: {}
     }
 
     
     componentWillMount() {
         
-        axios.get(process.env.REACT_APP_GET_WORKOUT_URL + '?user_id=5cc94f1112c41412abe3a553&start=2019-05-07&end=2019-05-12')
+        axios.get(process.env.REACT_APP_GET_WORKOUT_URL + '?user_id=5cc94f1112c41412abe3a553&start=2019-05-01&end=2019-05-13')
         .then(response => {
         console.log('response',response);
         let workouts = response.data
@@ -44,11 +45,12 @@ class ViewWorkout extends Component {
            console.log({exercises})
            console.log({exercisesSet})
           this.setState({exerciseList:exercisesSet})
-
-
-           const exercise = 'Bench Press'
-           const chartExercise = this.filterByExercise(exercise)
         })
+
+        const exercise = this.state.exerciseList[0]
+        console.log('first', this.state.exerciseList[0])
+        this.filterByExercise(exercise)
+        this.chartFilter()
 
 
 
@@ -85,15 +87,55 @@ class ViewWorkout extends Component {
     })
     this.setState({chartExercise})
 
-
     }
+
+    chartFilter = () => {
+
+        // Sort By Date
+        this.state.chartExercise.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0));
+
+        //add Intensity
+
+        this.state.chartExercise.map(chart => chart.intensity = (chart.set * chart.reps *chart.weight))
+
+        // map
+        var dates = this.state.chartExercise.map(chart => (moment(chart.start).format('DD MMM')))
+        var intensity = this.state.chartExercise.map(chart => (chart.intensity))
+
+        const data = {
+            labels: dates,
+            datasets: [{
+                label: 'Training Intensity',
+                data: intensity,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+        this.setState({data})
+        console.log('working?', this.state)
+        }
 
     render() {
         return (
             <div className="container-view">
                 <DailyWorkout filterWorkout={this.state.filterWorkout} filterByDate={this.filterByDate}></DailyWorkout>
                 <div className="svg"></div>
-                <SelectChart exerciseList={this.state.exerciseList} chartExercise={this.state.chartExercise} filterByExercise={this.filterByExercise}> </SelectChart>
+                <SelectChart exerciseList={this.state.exerciseList} chartExercise={this.state.chartExercise} filterByExercise={this.filterByExercise} chartFilter={this.chartFilter} data={this.state.data}> </SelectChart>
             </div>
         );
     }
