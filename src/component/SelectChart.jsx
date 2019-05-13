@@ -22,13 +22,6 @@ class Select extends Component {
             },
             scales: {
             xAxes: [{
-                // type: 'time',
-                // time: {
-                //     format: 'YYYY-MM-DD',
-                //     displayFormats: {
-                //         'day': 'DD-MM'
-                //     }
-                // },
                 ticks: {
                     autoSkip: true,
                     maxTicksLimit: 5
@@ -43,9 +36,9 @@ class Select extends Component {
         let exercise = e.target.value;
         console.log('target.value', e.target.value)
         this.props.filterByExercise(exercise)
-        console.log('chartex', this.props.chartExercise)
+        console.log('new chart', this.props.chartExercise)
         this.props.chartFilter()
-        console.log('truth', this.props.data)
+        console.log('what is going on', this.props.data)
     }
 
 

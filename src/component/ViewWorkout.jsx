@@ -50,7 +50,10 @@ class ViewWorkout extends Component {
         const exercise = this.state.exerciseList[0]
         console.log('first', this.state.exerciseList[0])
         this.filterByExercise(exercise)
+        console.log('filterWorkout', this.state.filterWorkout)
         this.chartFilter()
+        // console.log('should be benchpress', this.state.data)
+
 
 
 
@@ -79,13 +82,13 @@ class ViewWorkout extends Component {
     filterByExercise = (exercise) =>
     {
         const chartExercise = this.state.workouts.filter((workout) =>{
-        console.log('exercise', exercise)
         let workoutExercise = workout.name
 
         return exercise === workoutExercise
     
     })
     this.setState({chartExercise})
+    console.log('chartex', this.state.chartExercise)
 
     }
 
@@ -93,10 +96,11 @@ class ViewWorkout extends Component {
 
         // Sort By Date
         this.state.chartExercise.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0));
-
+        console.log('chartex sorted', this.state.chartExercise)
         //add Intensity
-
+        
         this.state.chartExercise.map(chart => chart.intensity = (chart.set * chart.reps *chart.weight))
+        console.log('mapped', this.state.chartExercise)
 
         // map
         var dates = this.state.chartExercise.map(chart => (moment(chart.start).format('DD MMM')))
@@ -127,7 +131,7 @@ class ViewWorkout extends Component {
             }]
         }
         this.setState({data})
-        console.log('working?', this.state)
+        console.log('working?', this.state.data)
         }
 
     render() {
