@@ -5,9 +5,14 @@ class Step0 extends Component {
         return (
             <div className='container'>
                 <div className='container-step0'>
+
                     <div className='caption'>Welcome, {this.props.name}!</div>
-                    <div className='heading'>Start and fill out <br/>your first workout</div>
-                    <a onClick={() => this.props.next(this.props.step)}><div className='button'>Fill Workout</div></a>
+                    <div className='heading'>Start and fill out your first workout or check out your progress</div>
+
+                    <div className="container-nav">
+                        <a onClick={() => this.props.view()}><div className='button-nav secondary'>View</div></a>
+                        <a onClick={() => this.props.next(this.props.step)}><div className='button-nav primary'>Fill</div></a>
+                    </div>
                 </div>
             </div>
         );
