@@ -5,6 +5,7 @@ import AutosuggestHighlightParse from "autosuggest-highlight/umd/parse";
 import axios from 'axios';
 import _ from 'lodash';
 import '../css/SearchBar.css'
+import AuthHelperService from '../service/AuthHelperService';
 
 // const exercises = [
 //     {
@@ -105,6 +106,8 @@ class SearchBar extends Component {
     constructor() {
       super();
 
+      this.Auth = new AuthHelperService();
+
       this.state = {
           task: {},
           value: '',
@@ -117,7 +120,9 @@ class SearchBar extends Component {
 
     loadSuggestions(value) {
       
-        axios.get(process.env.REACT_APP_GET_EXERCISE_URL + `?search=${value}`)
+        const tokenStr = this.Auth.getToken();
+
+        axios.get(process.env.REACT_APP_GET_EXERCISE_URL + `?search=${value}`, { headers: {"Authorization" : `Bearer ${tokenStr}`} })
           .then(response => {
             console.log('response', response);
             this.setState({ suggestions: response.data })
@@ -133,15 +138,6 @@ class SearchBar extends Component {
 
     onSuggestionsFetchRequested = ({ value }) => {
         this.debouncedLoadSuggestions(value);
-        //this.setState({suggestions: getSuggestions(value)});
-        // axios.get(process.env.REACT_APP_GET_EXERCISE_URL + `?search=${value}`)
-        //   .then(response => {
-        //     console.log('response', response);
-        //     this.setState({ suggestions: response.data })
-        //   })
-        //   .catch(error => {
-        //     console.log('error', error);
-        //   });
     };
 
     onSuggestionsClearRequested = () => {

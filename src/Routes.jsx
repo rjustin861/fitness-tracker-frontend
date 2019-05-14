@@ -4,6 +4,7 @@ import App from './component/App';
 import Dashboard from './component/Dashboard';
 
 class Routes extends Component {
+
     render() {
         return (
             <BrowserRouter basename={process.env.PUBLIC_URL}>

@@ -5,7 +5,8 @@ class Step0 extends Component {
         return (
             <div className='container'>
                 <div className='container-step0'>
-                    <div className='caption'>Welcome on Board!</div>
+
+                    <div className='caption'>Welcome, {this.props.name}!</div>
                     <div className='heading'>Start and fill out your first workout or check out your progress</div>
 
                     <div className="container-nav">
