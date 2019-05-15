@@ -5,6 +5,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import ViewWorkout from './ViewWorkout';
+import Nav from './Nav';
 import AuthHelperService from '../service/AuthHelperService';
 
 class DashboardBody extends Component {
@@ -70,6 +71,7 @@ class DashboardBody extends Component {
                 {this.state.step === 2 && <Step2 step={2} prev={this.prev} next={this.next} workout={this.state.workout} />}
                 {this.state.step === 3 && <Step3 step={3} prev={this.prev} save={this.save} workout={this.state.workout} />}
                 {this.state.step === 4 && <ViewWorkout />}
+                <Nav></Nav>
             </div>
         );
     }

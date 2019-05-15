@@ -15,21 +15,43 @@ class FillExerciseLog extends Component {
     }
 
     updateSets = (e) => {
+        console.log('Input value', e.target.value)
+        if(e.target.value == 0) {
+            this.setState({
+                set: 1
+            })
+        } else {
         this.setState({
             set: e.target.value
         });
+        }
     }
 
     updateReps = (e) => {
+        if(e.target.value == 0) {
+            this.setState({
+                repetitions: 1
+            })
+        } else {
         this.setState({
             repetitions: e.target.value
         });
+        }
     }
 
     updateWeight = (e) => {
-        this.setState({
-            weight: e.target.value
-        });
+
+        if(e.target.value == 0) {
+            this.setState({
+                weight: 1
+            })
+            } else {
+
+            this.setState({
+                weight: e.target.value
+            });
+            }
+            console.log('no zero', this.state)
     }
 
     handleFormSubmit = (e) => {

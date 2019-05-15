@@ -1,18 +1,17 @@
 .container {
     display: flex;
     flex-direction: column;
-    /* padding: 1.5rem; */
-    height: 80vh;
     padding: 0 1.5rem;
     justify-content: space-between;
-    margin-top: 5rem;
+    margin: 5rem 0 3.5rem 0;
+    /* height: 70vh; */
 }
 
 .container-view {
     display: flex;
     flex-direction: column;
     padding: 0 1.5rem;
-    margin-top: 5rem;
+    margin: 5rem 0 3.5rem 0;
 }
 
 .container-step0 {

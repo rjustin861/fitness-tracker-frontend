@@ -73,7 +73,11 @@ class ViewWorkout extends Component {
 
         return exercise === workoutExercise
         })
-        chartExercise.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0));
+        console.log('weight', chartExercise)
+   
+        
+        chartExercise.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0))
+        
         chartExercise.map(chart => chart.intensity = (chart.set * chart.reps * chart.weight))
         console.log('chart Exercise', chartExercise)
         var dates = chartExercise.map(chart => (moment(chart.start).format('DD MMM')))
