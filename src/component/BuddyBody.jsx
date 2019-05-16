@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 class BuddyBody extends Component {
+    
     render() {
         return (
             <div>
@@ -25,7 +26,7 @@ class BuddyBody extends Component {
                       <div className="card_cta">
 
                         <div className="dist"><span>{dist}</span> {unit}</div>
-                        <div className="card_button">View Log</div>
+                        <div className="card_button" onClick={()=> this.props.viewLog(buddy._id)}>View Log</div>
                       </div>
                     </div>
                 )
