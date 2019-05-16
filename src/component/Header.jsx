@@ -9,16 +9,20 @@ class Header extends Component {
                     <div className="logo">
                         <a href="/"><img src={logo} alt="Logo"/></a>
                     </div>
-                    <div>
-                        <ul className="nav">
-                        {
-                            this.props.isLoggedIn === true ?
-                                <><li><a href="#" onClick={() => this.props.performLogout()}>Logout</a></li></> 
-                            : 
-                                <><li><a href="#" onClick={() => this.props.showModal('Register')}>Register</a></li><li><a href="#" onClick={() => this.props.showModal('Login')}>Login</a></li></>
-                        }
-                        </ul>
-                    </div>
+                        <div>
+                            <ul className="nav">
+                            {
+                                this.props.isLoggedIn !== true ? 
+                                    <>
+                                    <li><a href="#" onClick={() => this.props.showModal('Register')}>
+                                    Register</a></li>
+                                    <li><a href="#" onClick={() => this.props.showModal('Login')}>Login</a></li>
+                                    </>
+                                :
+                                <></>
+                            }
+                            </ul>
+                        </div>
                 </div>
         )
     }

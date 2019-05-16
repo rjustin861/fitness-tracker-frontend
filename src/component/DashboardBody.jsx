@@ -50,7 +50,7 @@ class DashboardBody extends Component {
             .then(response => {
                 console.log('response', response.data);
                 alert('Record created');
-                this.setState({step: 0});
+                this.props.goToView();
             })
             .catch(error => {
                 console.log('error', error);
@@ -70,8 +70,6 @@ class DashboardBody extends Component {
                 {this.state.step === 1 && <Step1 step={1} prev={this.prev} next={this.next} workout={this.state.workout} />}
                 {this.state.step === 2 && <Step2 step={2} prev={this.prev} next={this.next} workout={this.state.workout} />}
                 {this.state.step === 3 && <Step3 step={3} prev={this.prev} save={this.save} workout={this.state.workout} />}
-                {this.state.step === 4 && <ViewWorkout />}
-                <Nav></Nav>
             </div>
         );
     }

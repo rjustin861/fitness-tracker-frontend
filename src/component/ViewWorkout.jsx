@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import WithAuth from '../service/WithAuth';
+
 import SelectChart from './SelectChart';
 import DailyWorkout from './DailyWorkout';
 import moment from 'moment';
 import AuthHelperService from '../service/AuthHelperService';
+import Header from './Header';
+import Nav from './Nav';
+
 
 
 
@@ -114,13 +119,20 @@ class ViewWorkout extends Component {
 
     render() {
         return (
-            <div className="container-view">
-                <DailyWorkout filterWorkout={this.state.filterWorkout} filterByDate={this.filterByDate}></DailyWorkout>
-                <div className="svg"></div>
-                <SelectChart selectedExercise={this.state.selectedExercise} exerciseList={this.state.exerciseList} filterByExercise={this.filterByExercise} data={this.state.data}> </SelectChart>
+            <div>
+                <Header isLoggedIn={true}/>
+                
+                <div className="container-view">
+                    <DailyWorkout filterWorkout={this.state.filterWorkout} filterByDate={this.filterByDate}></DailyWorkout>
+                    <div className="svg"></div>
+                    <SelectChart selectedExercise={this.state.selectedExercise} exerciseList={this.state.exerciseList} filterByExercise={this.filterByExercise} data={this.state.data}> </SelectChart>
+                </div>
+                <Nav></Nav>
             </div>
+
+
         );
     }
 }
 
-export default ViewWorkout;
+export default WithAuth(ViewWorkout);

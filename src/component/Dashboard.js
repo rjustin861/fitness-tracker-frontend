@@ -7,6 +7,8 @@ import WithAuth from '../service/WithAuth';
 
 import Header from './Header';
 import DashboardBody from './DashboardBody';
+import Nav from './Nav';
+
 import GeoHelperService from '../service/GeoHelperService';
 import axios from 'axios';
 import { userInfo } from 'os';
@@ -18,6 +20,10 @@ class Dashboard extends Component {
   performLogout = () => {
     this.Auth.logout();
     this.props.history.replace('/');
+  }
+  goToView = () => {
+    
+    this.props.history.replace('/view');
   }
 
   componentWillMount() {
@@ -50,8 +56,10 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <Header isLoggedIn={true} performLogout={this.performLogout} />
-        <DashboardBody name={this.props.confirm.name} />
+        <Header isLoggedIn={true}/>
+        <DashboardBody name={this.props.confirm.name} goToView={this.goToView}/>
+        <Nav></Nav>
+
       </div>
     );
   }
