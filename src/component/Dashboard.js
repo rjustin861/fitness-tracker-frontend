@@ -1,65 +1,56 @@
 import React, {Component} from 'react';
-import AuthHelperService from '../service/AuthHelperService';
-import '../css/Dashboard.css';
-
-//Our higher order component
-import WithAuth from '../service/WithAuth';
-
+import axios from 'axios';
 import Header from './Header';
 import DashboardBody from './DashboardBody';
 import Nav from './Nav';
+import AuthHelperService from '../service/AuthHelperService';
+import WithAuth from '../service/WithAuth';
 
-import GeoHelperService from '../service/GeoHelperService';
-import axios from 'axios';
-import { userInfo } from 'os';
+import '../css/Dashboard.css';
 
 class Dashboard extends Component {
   Auth = new AuthHelperService();
-  Geo = new GeoHelperService();
 
   performLogout = () => {
     this.Auth.logout();
     this.props.history.replace('/');
   }
+
   goToView = () => {
-    
     this.props.history.replace('/view');
   }
 
-  componentWillMount() {
-    this.Geo.getCoordinates()
-      .then((response) => {
-          console.log('coordinates data', response); //{lat: 9.7165312, long: 99.98581759999999
-          const tokenStr = this.Auth.getToken();
-          console.log({tokenStr})
-          let long = response.long
-          let lat = response.lat
-          let location = {
-            type: 'Point',
-            coordinates: [long, lat]
-          }
-          console.log({location})
-          axios.patch(process.env.REACT_APP_PATCH_USER, {location}, { headers: {"Authorization" : `Bearer ${tokenStr}`} } )
-          .then( (response) => {
-            	console.log({response})
-            	})
-            	.catch( (error) => {
-            		console.log(error);
-            	})
-          
-        })
-        .catch((error) => {
+  componentDidMount() {
+    const tokenStr = this.Auth.getToken();
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const location = {
+          type: 'Point',
+          coordinates: [position.coords.longitude, position.coords.latitude]
+        }
+
+        console.log({location});
+        axios.patch(process.env.REACT_APP_PATCH_USER, {location}, { headers: {"Authorization" : `Bearer ${tokenStr}`} } )
+          .then((response) => {
+            console.log('response', response);
+          })
+          .catch((error) => {
+              console.log('error', error);
+          });
+
+      },  (error) => {
           console.log('error', error);
-        })
+      }, {maximumAge:Infinity, timeout:5000, enableHighAccuracy:true});
+    }
   }
 
   render() {
     return (
       <div>
-        <Header isLoggedIn={true}/>
-        <DashboardBody name={this.props.confirm.name} goToView={this.goToView}/>
-        <Nav></Nav>
-
+        <Header isLoggedIn={true} />
+        <DashboardBody name={this.props.confirm.name} goToView={this.goToView} />
+        <Nav />
       </div>
     );
   }
