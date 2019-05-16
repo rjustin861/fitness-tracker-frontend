@@ -27,7 +27,12 @@ class BuddyBody extends Component {
                       
                 <div className="card_cta">
                   <div className="dist"><span>{dist}</span> {unit}</div>
-                  <div className="card_button" onClick={()=> this.props.viewLog(buddy._id)}>View Log</div>
+                  {
+                    buddy.hasWorkout ? 
+                      <div className="card_button" onClick={()=> this.props.viewLog(buddy._id)}>View Log</div>
+                    :
+                      <div className="no_workout">No Log Available</div>
+                  }
                 </div>
               </div>
             )
