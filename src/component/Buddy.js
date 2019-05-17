@@ -6,6 +6,8 @@ import SelectedBuddy from './SelectedBuddy';
 import Nav from './Nav';
 import AuthHelperService from '../service/AuthHelperService';
 import WithAuth from '../service/WithAuth';
+import moment from 'moment';
+
 
 import '../css/Dashboard.css';
 import '../css/DailyWorkout.css';
@@ -19,7 +21,8 @@ class Buddy extends Component {
     this.state = {
       loading: 'initial',
       buddies: [],
-      selectedBuddy: []
+      selectedBuddy: [],
+      filterWorkouts: []
     };
     this.viewLog = this.viewLog.bind(this);
   }
@@ -44,7 +47,7 @@ class Buddy extends Component {
 
       },  (error) => {
           console.log('error', error);
-      }, {maximumAge:Infinity, timeout:5000, enableHighAccuracy:true});
+      }, {maximumAge:Infinity, timeout:5000, enableHighAccuracy:false});
     }
   }
 
@@ -60,6 +63,19 @@ class Buddy extends Component {
       });
   }
 
+  filterWorkoutsByDate = (end) => {
+    console.log(end)
+    const filterWorkouts = this.state.selectedBuddy.filter((workout) =>{
+    let date = moment(end).format('YYYY-MM-DD')
+    let today = moment(workout.end).local().format('YYYY-MM-DD')
+
+    return date === today
+
+    })
+    this.setState({filterWorkouts})
+
+}
+
   render() {
     return (
       <div>
@@ -68,12 +84,12 @@ class Buddy extends Component {
           <h3>Workout buddies around you</h3>
           {this.state.loading === 'initial' && <h3>Intializing...</h3>}
         
-          {this.state.loading === 'true' && <h3>Loading...</h3>}
+          {this.state.loading === 'true' && <h3>Looking for buddies around you...</h3>}
 
           {
             this.state.loading === 'false' && this.state.selectedBuddy.length === 0 ?
               <BuddyBody buddies={this.state.buddies} viewLog={this.viewLog} />
-            : <SelectedBuddy selectedBuddy={this.state.selectedBuddy} />
+            : <SelectedBuddy selectedBuddy={this.state.selectedBuddy} filterWorkouts={this.state.filterWorkouts} filterWorkoutsByDate={this.filterWorkoutsByDate}/>
           }
         </div>
         <Nav />

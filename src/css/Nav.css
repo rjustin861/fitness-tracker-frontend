@@ -46,6 +46,9 @@
     margin: 0;
     color: #4e4e4e;
 }
-.bottomnav_item:hover {
+.bottomnav_list a {
+    text-decoration: none;
+}
+.bottomnav_list a:hover {
     color: #A6032F;
 }
