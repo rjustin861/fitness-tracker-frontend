@@ -77,30 +77,32 @@ class FillExerciseLog extends Component {
     render() {
         return (
             <div>
-                <div className='exercise_name'>{this.props.selectedExercise}</div>
-                <form>
-                    <div className="form-group">
-                        <label htmlFor="id_sets" className="control-label col-md-3">
-                            Number of sets:
-                        </label>
-                        <input name="sets" id="id_sets" type="number" className="exerciseForm" ref={(input) => this.setInput = input} value={this.state.set} onChange={this.updateSets}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="id_reps" className="col-md-3 control-label">
-                            Number of reps:
-                        </label>
-                        <input name="reps" id="id_reps" type="number" className="exerciseForm" value={this.state.repetitions} onChange={this.updateReps}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="id_weight" className="col-md-3 control-label">
-                            Weight (kg):
-                        </label>
-                        <input name="weight" id="id_weight" type="number" className="exerciseForm" value={this.state.weight} onChange={this.updateWeight}/>
-                    </div>
-                    <div className="form-group">
-                        <a className={"saveButton " + (this.state.set && this.state.repetitions && this.state.weight ? '' : 'disabled')} onClick={(e) => this.handleFormSubmit(e)}><div className='button small primary'>Save</div></a>
-                    </div>
-                </form>
+                <div className="form">
+                    <div className='exercise_name'>{this.props.selectedExercise}</div>
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="id_sets" className="control-label col-md-3">
+                                Number of sets:
+                            </label>
+                            <input name="sets" id="id_sets" type="number" className="exerciseForm" ref={(input) => this.setInput = input} value={this.state.set} onChange={this.updateSets}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="id_reps" className="col-md-3 control-label">
+                                Number of reps:
+                            </label>
+                            <input name="reps" id="id_reps" type="number" className="exerciseForm" value={this.state.repetitions} onChange={this.updateReps}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="id_weight" className="col-md-3 control-label">
+                                Weight (kg):
+                            </label>
+                            <input name="weight" id="id_weight" type="number" className="exerciseForm" value={this.state.weight} onChange={this.updateWeight}/>
+                        </div>
+                        <div className="form-group">
+                            <a className={"saveButton " + (this.state.set && this.state.repetitions && this.state.weight ? '' : 'disabled')} onClick={(e) => this.handleFormSubmit(e)}><div className='button small primary'>Save</div></a>
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }

@@ -9,10 +9,14 @@
     width: 100vw;
     top: 0;
     z-index: 3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: white;
 }
 
 .logo img {
-    height: 4rem;
+    height: 2.3rem;
 }
 
 ul.nav {
@@ -30,6 +34,23 @@ ul.nav {
 .nav li a {
     text-decoration: none;
     color: white;
+    cursor: pointer;
+}
+
+.nav li a:hover {
+    font-weight: 600;
+    /* text-decoration: underline; */
+    border-bottom: 1px solid white;
+}
+
+.fa-dumbbell {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.brand {
+    font-weight: 600;
 }
   
  

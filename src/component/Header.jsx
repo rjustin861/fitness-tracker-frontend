@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import '../css/Header.css';
-import logo from '../media/logo.png';
+import logo from '../img/icon.png';
 
 class Header extends Component {
     render() {
         return (
                 <div className="header">
                     <div className="logo">
-                        <a href="/"><img src={logo} alt="Logo"/></a>
+                        <a href="/dashboard"><img src={logo}/></a>
                     </div>
+                    
                         <div>
                             <ul className="nav">
                             {

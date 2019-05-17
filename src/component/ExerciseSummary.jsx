@@ -9,7 +9,7 @@ class ExerciseSummary extends Component {
                     <div className="col-name">Exercise</div>
                     <div className="col">Sets</div>
                     <div className="col">Reps</div> 
-                    <div className="col">Weights</div> 
+                    <div className="col">Weight</div> 
                     <div className="col-icon"></div>
                 </div>
                 {

@@ -9,23 +9,33 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-box-shadow: 4px 4px 6px 0px rgba(209,209,209,1);
+    -moz-box-shadow: 4px 4px 6px 0px rgba(209,209,209,1);
+    box-shadow: 4px 4px 6px 0px rgba(209,209,209,1);
   }
   
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 4rem auto; /* 15% from the top and centered */
     padding: 1rem;
     border: 1px solid #888;
+    border-radius: 3px;
     width: 80%; /* Could be more or less, depending on screen size */
+  }
+
+  .modal_title {
+    margin-top: 0;
+    /* line-height: 0; */
   }
   
   /* The Close Button */
   .close {
     color: #aaa;
     float: right;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0 0 0.5rem 0;
   }
   
   .close:hover,
@@ -38,3 +48,37 @@
   .hidden {
       display: none;
   }
+
+  input[type=text],
+  input[type=password] {
+    border: 2px solid#590219;
+    border-radius: 3px;
+    background-color: #fff;
+    /* text-transform: uppercase;   */
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.submit {
+  border-radius: 5px;
+  text-align: center;
+  padding: 0.5rem;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: white;
+  background-color: #A6032F;
+  outline: none;
+  border: 1px solid #A6032F;
+}
+
+.access {
+  margin-top: 1.5rem;
+}

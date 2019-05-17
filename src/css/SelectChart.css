@@ -39,7 +39,7 @@ select {
 option {
     color: #A6032F;
     text-transform: uppercase;  
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
     margin: 0.25rem 0;

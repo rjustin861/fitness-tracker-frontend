@@ -84,7 +84,7 @@ class Buddy extends Component {
           <h3>Workout buddies around you</h3>
           {this.state.loading === 'initial' && <h3>Intializing...</h3>}
         
-          {this.state.loading === 'true' && <h3>Looking for buddies around you...</h3>}
+          {this.state.loading === 'true' && <p>Looking for buddies...</p>}
 
           {
             this.state.loading === 'false' && this.state.selectedBuddy.length === 0 ?

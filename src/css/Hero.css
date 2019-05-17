@@ -1,8 +1,62 @@
 .hero {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
+    /* background-image: rgba(82,82,82,1);
+    background-image: -moz-radial-gradient(center, ellipse cover, rgba(82,82,82,1) 0%, rgba(71,71,71,0.96) 25%, rgba(51,50,51,0.92) 50%, rgba(41,41,41,0.88) 75%, rgba(54,54,54,0.84) 100%);
+    background-image: -webkit-radial-gradient(center, ellipse cover, rgba(82,82,82,1) 0%, rgba(71,71,71,0.96) 25%, rgba(51,50,51,0.92) 50%, rgba(41,41,41,0.88) 75%, rgba(54,54,54,0.84) 100%);
+    background-image: -o-radial-gradient(center, ellipse cover, rgba(82,82,82,1) 0%, rgba(71,71,71,0.96) 25%, rgba(51,50,51,0.92) 50%, rgba(41,41,41,0.88) 75%, rgba(54,54,54,0.84) 100%);
+    background-image: -ms-radial-gradient(center, ellipse cover, rgba(82,82,82,1) 0%, rgba(71,71,71,0.96) 25%, rgba(51,50,51,0.92) 50%, rgba(41,41,41,0.88) 75%, rgba(54,54,54,0.84) 100%);
+    background-image: radial-gradient(ellipse at center, rgba(82,82,82,1) 0%, rgba(71,71,71,0.96) 25%, rgba(51,50,51,0.92) 50%, rgba(41,41,41,0.88) 75%, rgba(54,54,54,0.84) 100%); */
     background-image: url('../media/splash.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    background-attachment: fixed;
+
 }
+
+.hero_svg {
+    background-color: #590219;
+    width: 20%;
+    height: 3px;
+    border-radius: 1px;
+    margin: 1.5rem auto;
+}
+
+.hero_area {
+    background-color: white;
+    opacity: 0.9;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1rem;
+    width: 80%;
+}
+
+.hero_area img {
+    width: 100px;
+}
+
+.hero_title {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.hero_subtitle {
+    font-weight: 800;
+    font-size: 1.2rem;
+    /* color: #A6032F; */
+}
+
+.hero_abstract {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+}
+
+strong {
+    color:#A6032F;
+}
+

@@ -78,13 +78,14 @@ input[name="exercise"] {
     size: 2rem;
     padding: 10px;
     width: 100%;
+    font-weight: 400;
 }
 
 .exerciseSummary {
     background-color: darkgrey;
     color: white;
     width: 100%;
-    padding: 0.5rem 1.5rem;
+    padding: 1rem 1.5rem;
     position: fixed;
     top: 4rem;
     z-index: 3;
@@ -121,15 +122,17 @@ button.white {
 }
 
 .col-icon {
-    width: 1.7rem;
+    color: #A6032F;
+    font-size: 0.75rem;
+    
 }
 
 .col-name {
-    width: 35%;
+    width: 30%;
 }
 
 .col {
-    flex: 1;        /* distributes space on the line equally among items */
+    flex: 0.5;  /*       distributes space on the line equally among items */
     text-align: center;
   }
 
@@ -138,4 +141,8 @@ button.white {
     font-weight: 400;
     font-size: 0.75rem;
     text-decoration: underline;
+}
+.fa-minus-circle {
+    color: #A6032F;
+    font-size: 1rem;
 }

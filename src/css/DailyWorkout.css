@@ -9,11 +9,10 @@
 ::-webkit-calendar-picker-indicator { color:#A6032F; }
 
 
-.title {
-    text-transform: uppercase;  
+.title { 
     color: #590219;
     letter-spacing: 1px;
-    font-weight: 700;
+    font-weight: 600;
     margin: 1rem 0;
     line-height: 1.5rem;
     font-size: 1rem;
@@ -44,7 +43,7 @@ input[type=date] {
     border-radius: 3px;
     background-color: #fff;
     text-transform: uppercase;  
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 1rem;

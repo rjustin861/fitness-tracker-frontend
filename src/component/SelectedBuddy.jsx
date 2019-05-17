@@ -17,7 +17,7 @@ class SelectedBuddy extends Component {
     render() {
         return (
             <div>
-            <p className="title">Check your buddy's workouts:</p>
+            <p className="title">Check your buddies' workouts:</p>
                 <input className="date" defaultValue={this.state.date} type="date" onChange={(e) => this.updateDate(e)}/>
             <div>
                 <div className="workout">
