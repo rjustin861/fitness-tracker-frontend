@@ -23,7 +23,7 @@ class Hero extends Component {
                         <p className="hero_abstract">With fitness tracker you can <strong>find workout fellows</strong> around you
                         and check out their trainings.
                         <br/>
-                        <strong>Don't be shy, sign up and meet your new training buddies!</strong></p>
+                        <strong>Don't be shy, sign up and meet new training buddies!</strong></p>
 
                     </div>
                 </div>
