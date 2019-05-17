@@ -80,6 +80,10 @@ input[name="exercise"] {
     width: 100%;
 }
 
+.step2-body {
+    margin-top: 2.5rem;
+}
+
 .exerciseSummary {
     background-color: darkgrey;
     color: white;
@@ -138,4 +142,9 @@ button.white {
     font-weight: 400;
     font-size: 0.75rem;
     text-decoration: underline;
+}
+
+.error-message {
+    color: #A6032F;
+    margin: 0 0 0.75rem 0;
 }

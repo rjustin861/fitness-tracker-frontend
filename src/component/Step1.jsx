@@ -7,6 +7,7 @@ class Step1 extends Component {
     state = {
         startTime: moment().format('YYYY-MM-DDTHH:mm'),
         endTime: moment().format('YYYY-MM-DDTHH:mm'),
+        error: '',
         workout: []
     }
 
@@ -56,6 +57,15 @@ class Step1 extends Component {
         });
     }
 
+    next = () => {
+        if(this.state.endTime < this.state.startTime) {
+            this.setState({error: 'End time cannot be before start time!'});
+        } else{
+            this.setState({error: ''});
+            this.props.next(this.props.step, this.state.workout);
+        }
+    }
+
     render() {
         return (
             <div className='container'>
@@ -69,9 +79,14 @@ class Step1 extends Component {
                     <div className='content'>When did you end your training?</div>
                     <div className='content'><input type="datetime-local"  value={this.state.endTime} onChange={(e) => this.updateEndTime(e)} /></div>
                 </div>
+                { this.state.error && 
+                    <div className='error-message'>
+                        <strong>ERROR</strong> - {this.state.error}
+                    </div>
+                }
                 <div className='container-nav'>
                     <a onClick={() => this.props.prev(this.props.step, this.state.workout)}><div className='button-nav secondary'>{"<"} Prev</div></a>
-                    <a onClick={() => this.props.next(this.props.step, this.state.workout)}><div className='button-nav primary'>Next {">"}</div></a>
+                    <a onClick={() => this.next()}><div className='button-nav primary'>Next {">"}</div></a>
                 </div>
             </div>
         );

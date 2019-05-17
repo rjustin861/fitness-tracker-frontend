@@ -4,7 +4,7 @@ import Collapsible from 'react-collapsible';
 class ExerciseSummary extends Component {
     render() {
         return (
-            <Collapsible trigger="Exercise Summary" open={false} className="exerciseSummary" openedClassName="exerciseSummary">
+            <Collapsible trigger="Show Exercise Summary" triggerWhenOpen="Hide Exercise Summary" open={true} className="exerciseSummary" openedClassName="exerciseSummary">
                 <div className="exerciseRow exerciseHeader">
                     <div className="col-name">Exercise</div>
                     <div className="col">Sets</div>
