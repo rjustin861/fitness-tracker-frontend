@@ -52,3 +52,7 @@
 .bottomnav_list a:hover {
     color: #A6032F;
 }
+
+.active {
+    background-color: blue;
+}

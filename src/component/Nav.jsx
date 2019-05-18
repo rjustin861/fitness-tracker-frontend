@@ -3,8 +3,14 @@ import '../css/Nav.css';
 import AuthHelperService from '../service/AuthHelperService';
 
 
+
+
 class Nav extends Component {
   Auth = new AuthHelperService();
+
+  state = {
+      isActive: true
+  }
 
   performLogout = () => {
     this.Auth.logout();
