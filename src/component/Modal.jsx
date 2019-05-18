@@ -56,8 +56,8 @@ class Modal extends Component {
                         <input type="text" name="name" placeholder="Enter Name" value={this.state.name} onChange={this.updateField} />
                         <input type="text" name="email" placeholder="Enter E-mail" value={this.state.email} onChange={this.updateField} />
                         <input type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.updateField} />
+                        <div className="error">{this.state.errorMessage}</div>
                         <button className="submit" type="submit">Register</button>
-                        <div>{this.state.errorMessage}</div>
                     </form>
                 </div>
             )
@@ -67,8 +67,8 @@ class Modal extends Component {
                     <form onSubmit={(e) => this.handleLogin(e)}>
                         <input type="text" name="email" placeholder="Enter E-mail" value={this.state.email} onChange={this.updateField} />
                         <input type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.updateField} />
+                        <div className="error">{this.state.errorMessage}</div>
                         <button className="submit" type="submit">Login</button>
-                        <div>{this.state.errorMessage}</div>
                     </form>
                 </div>
             )

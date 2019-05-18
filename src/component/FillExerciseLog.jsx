@@ -40,18 +40,7 @@ class FillExerciseLog extends Component {
     }
 
     updateWeight = (e) => {
-
-        if(e.target.value == 0) {
-            this.setState({
-                weight: 1
-            })
-            } else {
-
-            this.setState({
-                weight: e.target.value
-            });
-            }
-            console.log('no zero', this.state)
+        this.setState({weight: e.target.value});
     }
 
     handleFormSubmit = (e) => {

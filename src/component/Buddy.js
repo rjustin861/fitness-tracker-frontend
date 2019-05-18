@@ -22,7 +22,7 @@ class Buddy extends Component {
       loading: 'initial',
       buddies: [],
       selectedBuddy: [],
-      filterWorkouts: []
+      filteredWorkouts: []
     };
     this.viewLog = this.viewLog.bind(this);
   }
@@ -47,7 +47,7 @@ class Buddy extends Component {
 
       },  (error) => {
           console.log('error', error);
-      }, {maximumAge:Infinity, timeout:5000, enableHighAccuracy:false});
+      }, {maximumAge:Infinity, timeout:5000, enableHighAccuracy:true});
     }
   }
 
@@ -63,18 +63,16 @@ class Buddy extends Component {
       });
   }
 
-  filterWorkoutsByDate = (end) => {
-    console.log(end)
-    const filterWorkouts = this.state.selectedBuddy.filter((workout) =>{
-    let date = moment(end).format('YYYY-MM-DD')
-    let today = moment(workout.end).local().format('YYYY-MM-DD')
-
-    return date === today
-
-    })
-    this.setState({filterWorkouts})
-
-}
+  filterWorkoutsByDate = (endDate) => {
+    const filteredWorkouts = this.state.selectedBuddy.filter((workout) => {
+      let date = moment(endDate).format('YYYY-MM-DD');
+      let today = moment(workout.end).local().format('YYYY-MM-DD');
+      return date === today;
+    });
+    console.log('filteredWorkouts', filteredWorkouts);
+    
+    this.setState({filteredWorkouts});
+  }
 
   render() {
     return (
@@ -87,9 +85,15 @@ class Buddy extends Component {
           {this.state.loading === 'true' && <p>Looking for buddies...</p>}
 
           {
-            this.state.loading === 'false' && this.state.selectedBuddy.length === 0 ?
-              <BuddyBody buddies={this.state.buddies} viewLog={this.viewLog} />
-            : <SelectedBuddy selectedBuddy={this.state.selectedBuddy} filterWorkouts={this.state.filterWorkouts} filterWorkoutsByDate={this.filterWorkoutsByDate}/>
+            (() => {
+              if(this.state.loading === 'false') {
+                if(this.state.selectedBuddy.length === 0) {
+                  return <BuddyBody buddies={this.state.buddies} viewLog={this.viewLog} />
+                } else {
+                  return <SelectedBuddy user={this.state.selectedBuddy[0].user} selectedBuddy={this.state.selectedBuddy} filteredWorkouts={this.state.filteredWorkouts} filterWorkoutsByDate={this.filterWorkoutsByDate}/>
+                }
+              }
+            })()
           }
         </div>
         <Nav />

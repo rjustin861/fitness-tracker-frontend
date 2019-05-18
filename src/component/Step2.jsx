@@ -50,8 +50,15 @@ class Step2 extends Component {
                         <div className='breadcrumb'>Step 2 of 3</div>
                     </div>
 
-                    <div>
-                        <div className='content'>Let's find your exercise:</div>
+                    <div className='step2-body'>
+                    {
+                        (() => {
+                            if(this.state.workout[0].exercise_log && this.state.workout[0].exercise_log.length !== 0)
+                                return <div className='content'>Let's add another exercise:</div>
+                            else
+                                return <div className='content'>Let's find your exercise:</div>
+                        })()
+                    }
                         <SearchBar selectExercise={this.selectExercise} />
                     </div>
 

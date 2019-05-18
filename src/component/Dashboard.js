@@ -41,7 +41,7 @@ class Dashboard extends Component {
 
       },  (error) => {
           console.log('error', error);
-      }, {maximumAge:Infinity, timeout:5000, enableHighAccuracy:false});
+      }, {maximumAge:Infinity, timeout:5000, enableHighAccuracy:true});
     }
   }
 

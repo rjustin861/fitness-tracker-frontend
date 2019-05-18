@@ -29,12 +29,12 @@
     margin: 0 0 0.3rem 0;
 }
 
-.far:hover {
+/* .far:hover {
     color: #A6032F;
 }
 .fas:hover {
     color: #A6032F;
-}
+} */
 
 .bottomnav_item {
     text-align: center;
@@ -46,13 +46,16 @@
     margin: 0;
     color: #4e4e4e;
 }
-.bottomnav_list a {
+.bottomnav_a {
+    cursor: pointer;
     text-decoration: none;
 }
-.bottomnav_list a:hover {
+
+.bottomnav_a:hover * {
     color: #A6032F;
 }
 
-.active {
-    background-color: blue;
+
+.active * {
+    color: #A6032F !important;
 }

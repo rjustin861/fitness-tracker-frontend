@@ -81,6 +81,10 @@ input[name="exercise"] {
     font-weight: 400;
 }
 
+.step2-body {
+    margin-top: 2.5rem;
+}
+
 .exerciseSummary {
     background-color: lightgrey;
     color: white;
@@ -111,7 +115,7 @@ input[name="exercise"] {
 button.icon {
     border: 0;
     color: #A6032F;
-    background-color: darkgrey;
+    background-color: lightgrey;
     outline: none;
     cursor: pointer;
     font-size: 1rem;
@@ -142,7 +146,13 @@ button.white {
     font-size: 0.75rem;
     text-decoration: underline;
 }
+
 .fa-minus-circle {
     color: #A6032F;
     font-size: 1rem;
+}
+
+.error-message {
+    color: #A6032F;
+    margin: 0 0 0.75rem 0;
 }

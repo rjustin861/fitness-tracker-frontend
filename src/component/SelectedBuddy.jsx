@@ -17,17 +17,18 @@ class SelectedBuddy extends Component {
     render() {
         return (
             <div>
-            <p className="title">Check your buddies' workouts:</p>
+                <a className="back" href="/buddy">{"<"} Back</a>
+            <p className="title">Check out {this.props.user}'s workouts:</p>
                 <input className="date" defaultValue={this.state.date} type="date" onChange={(e) => this.updateDate(e)}/>
             <div>
                 <div className="workout">
                 <p className="workout_title">Daily Log</p>
                     <div className="svg"></div>
-                    {this.props.filterWorkouts.length == 0 && <div className="nodata"> <p>Sorry, there are no workouts in the selected date.</p></div>}
-                    {this.props.filterWorkouts.map((workout, index) => {
+                    {this.props.filteredWorkouts.length == 0 && <div className="nodata"> <p>Sorry, there are no workouts in the selected date.</p></div>}
+                    {this.props.filteredWorkouts.map((workout, index) => {
                         return (
                             <div key={index}>
-                                <p className="key">Muscle Group: <span className="value"> {workout.muscle}</span></p>
+                                <p className="key">Muscle Group: <span className="value"> {workout.muscle} </span></p>
                                 <p className="key">Exercise: <span className="value"> {workout.name}</span></p>
                                 <p className="key">Sets: <span className="value"> {workout.set}</span></p>
                                 <p className="key">Repetitions: <span className="value"> {workout.reps}</span></p>
