@@ -56,7 +56,10 @@ class Buddy extends Component {
 
     axios.get(process.env.REACT_APP_GET_WORKOUT_URL + '?user='+ id, { headers: {"Authorization" : `Bearer ${this.tokenStr}`} })
       .then((response) => {
-        this.setState({selectedBuddy: response.data});
+        this.setState({selectedBuddy: response.data}, function() {
+          const now = moment().format('YYYY-MM-DD');
+          this.filterWorkoutsByDate(now);
+        });
       })
       .catch((error)=> {
         console.log('error', error);            

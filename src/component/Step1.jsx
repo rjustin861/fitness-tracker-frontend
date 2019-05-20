@@ -59,7 +59,7 @@ class Step1 extends Component {
 
     next = () => {
         if(this.state.endTime < this.state.startTime) {
-            this.setState({error: 'End time cannot be before start time!'});
+            this.setState({error: 'End time cannot be before start time'});
         } else{
             this.setState({error: ''});
             this.props.next(this.props.step, this.state.workout);

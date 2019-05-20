@@ -122,7 +122,7 @@ button.icon {
 }
 
 button.white {
-    background: white;
+    background: #f9f9f9;
 }
 
 .col-icon {
@@ -153,6 +153,6 @@ button.white {
 }
 
 .error-message {
-    color: #A6032F;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.5rem 0;
+    font-size: 0.75rem;
 }

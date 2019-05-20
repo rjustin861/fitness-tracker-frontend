@@ -65,7 +65,11 @@ class RegisterModal extends Component {
                             <input type="text" name="name" placeholder="Enter Name" value={this.state.name} onChange={this.updateField} />
                             <input type="text" name="email" placeholder="Enter E-mail" value={this.state.email} onChange={this.updateField} />
                             <input type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.updateField} />
-                            <div className="error">{this.state.errorMessage}</div>
+                            { this.state.errorMessage && 
+                                <div className='error'>
+                                    <strong>ERROR</strong> - {this.state.errorMessage}
+                                </div>
+                            }
                             <button className="submit" type="submit">Register</button>
                         </form>
                     </div>

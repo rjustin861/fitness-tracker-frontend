@@ -42,7 +42,11 @@ class LoginModal extends Component {
                         <form onSubmit={(e) => this.handleLogin(e)}>
                             <input type="text" name="email" placeholder="Enter E-mail" value={this.state.email} onChange={this.updateField} />
                             <input type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.updateField} />
-                            <div className="error">{this.state.errorMessage}</div>
+                            { this.state.errorMessage && 
+                                <div className='error'>
+                                    <strong>ERROR</strong> - {this.state.errorMessage}
+                                </div>
+                            }
                             <button className="submit" type="submit">Login</button>
                         </form>
                     </div>
