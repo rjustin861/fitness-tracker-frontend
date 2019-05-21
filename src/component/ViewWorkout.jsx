@@ -28,7 +28,7 @@ class ViewWorkout extends Component {
 
         const tokenStr = this.Auth.getToken();
         
-        axios.get(process.env.REACT_APP_GET_WORKOUT_URL , { headers: {"Authorization" : `Bearer ${tokenStr}`}})
+        axios.get(process.env.REACT_APP_API_PROD_URL + '/api/workouts' , { headers: {"Authorization" : `Bearer ${tokenStr}`}})
         .then(response => {
         let workouts = response.data
         let workoutDate = response.data.start

@@ -37,7 +37,7 @@ class Buddy extends Component {
         const lat = position.coords.latitude;
         const long = position.coords.longitude;
 
-        axios.get(process.env.REACT_APP_GET_BUDDIES + '?long=' + long +'&lat=' + lat, { headers: {"Authorization" : `Bearer ${this.tokenStr}`} })
+        axios.get(process.env.REACT_APP_API_PROD_URL + '/api/users/location?long=' + long +'&lat=' + lat, { headers: {"Authorization" : `Bearer ${this.tokenStr}`} })
           .then((response) => {
             this.setState({buddies: response.data, loading: 'false'});
           })
@@ -54,7 +54,7 @@ class Buddy extends Component {
   viewLog(id) {
     console.log('id', id);
 
-    axios.get(process.env.REACT_APP_GET_WORKOUT_URL + '?user='+ id, { headers: {"Authorization" : `Bearer ${this.tokenStr}`} })
+    axios.get(process.env.REACT_APP_API_PROD_URL + '/api/workouts?user='+ id, { headers: {"Authorization" : `Bearer ${this.tokenStr}`} })
       .then((response) => {
         this.setState({selectedBuddy: response.data}, function() {
           const now = moment().format('YYYY-MM-DD');

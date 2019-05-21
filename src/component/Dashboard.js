@@ -31,7 +31,7 @@ class Dashboard extends Component {
         }
 
         console.log({location});
-        axios.patch(process.env.REACT_APP_PATCH_USER, {location}, { headers: {"Authorization" : `Bearer ${tokenStr}`} } )
+        axios.patch(process.env.REACT_APP_API_PROD_URL + '/api/user', {location}, { headers: {"Authorization" : `Bearer ${tokenStr}`} } )
           .then((response) => {
             console.log('response', response);
           })

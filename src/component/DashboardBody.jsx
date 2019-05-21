@@ -45,8 +45,7 @@ class DashboardBody extends Component {
 
         const tokenStr = this.Auth.getToken();
 
-        // axios.post(process.env.REACT_APP_POST_WORKOUT_URL + '?user_id=5cc94f1112c41412abe3a553', {workout})
-        axios.post(process.env.REACT_APP_POST_WORKOUT_URL, {workout}, { headers: {"Authorization" : `Bearer ${tokenStr}`} })
+        axios.post(process.env.REACT_APP_API_PROD_URL + '/api/workout', {workout}, { headers: {"Authorization" : `Bearer ${tokenStr}`} })
             .then(response => {
                 console.log('response', response.data);
                 alert('Record created');

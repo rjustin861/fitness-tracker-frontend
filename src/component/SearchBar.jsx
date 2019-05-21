@@ -122,7 +122,7 @@ class SearchBar extends Component {
       
         const tokenStr = this.Auth.getToken();
 
-        axios.get(process.env.REACT_APP_GET_EXERCISE_URL + `?search=${value}`, { headers: {"Authorization" : `Bearer ${tokenStr}`} })
+        axios.get(process.env.REACT_APP_API_PROD_URL + `/api/exercise?search=${value}`, { headers: {"Authorization" : `Bearer ${tokenStr}`} })
           .then(response => {
             console.log('response', response);
             this.setState({ suggestions: response.data })

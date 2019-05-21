@@ -16,11 +16,11 @@ export default class AuthHelperService {
         let url = '';
 
         if(command === 'signup') {
-            url = process.env.REACT_APP_SIGNUP_URL;
+            url = process.env.REACT_APP_API_PROD_URL + '/api/signup';
             data = {name, email, password};
         }
         else if(command === 'login') {
-            url = process.env.REACT_APP_LOGIN_URL;
+            url = process.env.REACT_APP_API_PROD_URL + '/api/login';
             data = {email, password};
         }
 
