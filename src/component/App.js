@@ -26,7 +26,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <Header isLoggedIn={false} showModal={this.showModal} />
         {this.state.command === 'Register' && <RegisterModal hideModal={this.hideModal} loginSuccessful={this.loginSuccessful} />}
         {this.state.command === 'Login' && <LoginModal hideModal={this.hideModal} loginSuccessful={this.loginSuccessful} />}
