@@ -43,9 +43,10 @@ class RegisterModal extends Component {
             this.setState({errorMessage});
         }
         else {
-            this.Auth.signUpOrLogin('signup', this.state.name, this.state.email, this.state.password)
+            const email = this.state.email.toLowerCase();
+
+            this.Auth.signUpOrLogin('signup', this.state.name, email, this.state.password)
                 .then((response) => {
-                    console.log('final response', response);
                     this.props.loginSuccessful();
                 })
                 .catch((error) => {

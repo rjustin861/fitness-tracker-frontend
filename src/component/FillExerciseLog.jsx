@@ -7,7 +7,8 @@ class FillExerciseLog extends Component {
     state = {
         set: '',
         repetitions: '',
-        weight: ''
+        weight: '',
+        error: ''
     }
 
     componentDidMount() {
@@ -15,28 +16,11 @@ class FillExerciseLog extends Component {
     }
 
     updateSets = (e) => {
-        console.log('Input value', e.target.value)
-        if(e.target.value == 0) {
-            this.setState({
-                set: 1
-            })
-        } else {
-        this.setState({
-            set: e.target.value
-        });
-        }
+        this.setState({set: e.target.value});
     }
 
     updateReps = (e) => {
-        if(e.target.value == 0) {
-            this.setState({
-                repetitions: 1
-            })
-        } else {
-        this.setState({
-            repetitions: e.target.value
-        });
-        }
+        this.setState({repetitions: e.target.value});
     }
 
     updateWeight = (e) => {
@@ -45,22 +29,27 @@ class FillExerciseLog extends Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        let data = {
-            exercise: this.props.selectedExercise,
-            set: this.state.set,
-            repetitions: this.state.repetitions,
-            weight: this.state.weight,
-            muscle_group: this.props.muscle_group
+        if(this.state.set == 0 || this.state.repetitions == 0) {
+            this.setState({error: 'Number of sets and number of repetitions cannot be zero'});
+        } else {
+            this.setState({error: ''});
+            let data = {
+                exercise: this.props.selectedExercise,
+                set: this.state.set,
+                repetitions: this.state.repetitions,
+                weight: this.state.weight,
+                muscle_group: this.props.muscle_group
+            }
+            
+            console.log('formData', data);
+            this.props.addExercise(data);
+            
+            this.setState({
+                set: '',
+                repetitions: '',
+                weight: ''
+            });
         }
-        
-        console.log('formData', data);
-        this.props.addExercise(data);
-        
-        this.setState({
-            set: '',
-            repetitions: '',
-            weight: ''
-        });
     }
 
     render() {
@@ -87,6 +76,11 @@ class FillExerciseLog extends Component {
                             </label>
                             <input name="weight" id="id_weight" type="number" className="exerciseForm" value={this.state.weight} onChange={this.updateWeight}/>
                         </div>
+                        { this.state.error && 
+                            <div className='error-message'>
+                                <strong>ERROR</strong> - {this.state.error}
+                            </div>
+                        }
                         <div className="form-group">
                             <a className={"saveButton " + (this.state.set && this.state.repetitions && this.state.weight ? '' : 'disabled')} onClick={(e) => this.handleFormSubmit(e)}><div className='button small primary'>Save</div></a>
                         </div>

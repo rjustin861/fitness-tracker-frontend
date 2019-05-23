@@ -24,7 +24,6 @@ export default function WithAuth(AuthComponent) {
                 try {
                     
                     const confirm = Auth.getConfirm()
-                    console.log("confirmation is:", confirm);
                     this.setState({
                         confirm: confirm,
                         loaded: true

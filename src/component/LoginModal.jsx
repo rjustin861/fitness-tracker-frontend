@@ -22,9 +22,10 @@ class LoginModal extends Component {
     handleLogin = (e) => {
         e.preventDefault();
 
-        this.Auth.signUpOrLogin('login', undefined, this.state.email, this.state.password)
+        const email = this.state.email.toLowerCase();
+
+        this.Auth.signUpOrLogin('login', undefined, email, this.state.password)
             .then((response) => {
-                console.log('final response', response);
                 this.props.loginSuccessful();
             })
             .catch((error) => {

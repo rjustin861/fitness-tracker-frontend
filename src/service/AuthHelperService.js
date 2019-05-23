@@ -26,11 +26,8 @@ export default class AuthHelperService {
 
         return axios.post(url, data)
             .then((response) => {
-                console.log('response data', response.data);
                 const token = response.headers['access-token'];
                 this.setToken(token);
-
-                console.log('token inside axios', this.getToken());
 
                 return response.data;
         });
@@ -44,7 +41,6 @@ export default class AuthHelperService {
     isTokenExpired = (token) => {
         try {
             const decoded = decode(token);
-            console.log('decoded exp', decoded.exp);
             
             if (decoded.exp < Date.now() / 1000) { // Checking if token is expired.
                 return true;
@@ -60,14 +56,12 @@ export default class AuthHelperService {
 
     isLoggedIn() {
         const token = this.getToken();
-        console.log('token', token);
         
         return !!token && !this.isTokenExpired(token); 
     }
 
     getConfirm() {
         const answer = decode(this.getToken());
-        console.log('Received answer', answer);
         return answer;
         
     }

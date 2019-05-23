@@ -162,7 +162,7 @@ class SearchBar extends Component {
         return (
             <div className='content'>
                 <Autosuggest
-                    suggestions={suggestions}
+                    suggestions={suggestions.slice(0, 5)}
                     onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                     onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                     getSuggestionValue={getSuggestionValue}

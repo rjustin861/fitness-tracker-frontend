@@ -47,7 +47,6 @@ class DashboardBody extends Component {
 
         axios.post(process.env.REACT_APP_API_PROD_URL + '/api/workout', {workout}, { headers: {"Authorization" : `Bearer ${tokenStr}`} })
             .then(response => {
-                console.log('response', response.data);
                 alert('Record created');
                 this.props.goToView();
             })
