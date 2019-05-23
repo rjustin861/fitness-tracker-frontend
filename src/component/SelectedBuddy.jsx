@@ -28,7 +28,6 @@ class SelectedBuddy extends Component {
                     {this.props.filteredWorkouts.map((workout, index) => {
                         return (
                             <div key={index}>
-                                <p className="key">Muscle Group: <span className="value"> {workout.muscle} </span></p>
                                 <p className="key">Exercise: <span className="value"> {workout.name}</span></p>
                                 <p className="key">Sets: <span className="value"> {workout.set}</span></p>
                                 <p className="key">Repetitions: <span className="value"> {workout.reps}</span></p>

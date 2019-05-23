@@ -83,7 +83,9 @@ class ViewWorkout extends Component {
         
         chartExercise.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0))
         
-        chartExercise.map(chart => chart.intensity = (chart.set * chart.reps * chart.weight) == 0 ? 1 : (chart.set * chart.reps * chart.weight))
+        chartExercise.map((chart) => {
+            chart.intensity = chart.weight == 0 ?  (chart.set * chart.reps)  : (chart.set * chart.reps * chart.weight);
+        });
         console.log('chart Exercise', chartExercise)
         var dates = chartExercise.map(chart => (moment(chart.start).format('DD MMM')))
         var intensity = chartExercise.map(chart => (chart.intensity))
